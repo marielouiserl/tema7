@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        #firkant {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        #cirkel {
+            width: 200px;
+            height: 200px;
+            border-radius: 100px;
+            background-color: red;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="firkant"></div>
+    <div id="cirkel"></div>
+
+
+    <script>
+        let firkant = document.querySelector("#firkant");
+
+        firkant.textContent = "grøn firkant";
+
+
+        let cirkel = document.querySelector("#cirkel");
+
+        cirkel.textContent = "rød cirkel";
+    </script>
+
+</body></html>

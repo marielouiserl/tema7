@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-areal</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <p>Indtast længden her</p>
+    <input type="text" id="height">
+    <p>Indtast bredden her</p>
+    <input type="text" id="width">
+
+    <button>Klik og udregn arealet i konsollen</button>
+
+    <script>
+        document.querySelector("button").addEventListener("click", button_clicked);
+
+        function button_clicked() {
+
+            let height = document.querySelector("#height").value;
+            let width = document.querySelector("#width").value;
+            let areal = height * width;
+
+            console.log(`Arealet er ${areal} `)
+
+        }
+    </script>
+
+
+</body></html>
