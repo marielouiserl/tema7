@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visalle</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 5px;
+            font-family: sans-serif;
+
+        }
+
+        .item {
+            border: 1px solid black;
+            padding: 5px;
+
+
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            margin: 0 auto 0 auto;
+
+
+
+
+        }
+
+        @media screen and (min-width: 600px) {
+
+
+            .container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 5px;
+                font-family: sans-serif;
+            }
+
+
+        }
+
+
+        @media screen and (min-width: 768px) {
+
+            .container {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-gap: 5px;
+                font-family: sans-serif;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body> <template>
+
+        <div class="container">
+
+
+            <div class="item">
+                <h2></h2>
+            </div>
+
+            <div class="item"><img src="" alt=""></div>
+
+            <div class="item">
+                <p></p>
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </template>
+    <section id="liste"></section>
+    <script>
+        let allePersoner;
+        const dest = document.querySelector("#liste");
+        const temp = document.querySelector("template");
+
+        document.addEventListener("DOMContentLoaded", getJson);
+
+
+        async function getJson() {
+            let jsonData = await fetch("https://spreadsheets.google.com/feeds/list/1Xge7slZ9dEOTCn1Yxl3OE4xgvrXOL8Y_iu3WN1yGB1U/od6/public/values?alt=json");
+            console.log("jsonData", jsonData);
+
+            allePersoner = await jsonData.json();
+            console.log("allePersoner", allePersoner);
+            visPersoner();
+            console.log("visPersoner", visPersoner);
+
+
+        }
+
+        function visPersoner() {
+
+            allePersoner.feed.entry.forEach((person) => {
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector("h2").textContent = person.gsx$navn.$t;
+                klon.querySelector("img").src = person.gsx$billede.$t;
+                klon.querySelector("p").textContent = person.gsx$github.$t;
+                dest.appendChild(klon);
+
+
+            })
+
+
+        }
+    </script>
+</body></html>
